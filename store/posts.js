@@ -2,7 +2,7 @@ import createCRUDModule from 'vuex-crud'
 
 const crudModule = createCRUDModule({
   resource: 'posts',
-  urlRoot: 'http://jsonplaceholder.typicode.com/posts'
+  urlRoot: 'https://jsonplaceholder.typicode.com/posts'
 })
 
 const state = () => crudModule.state
