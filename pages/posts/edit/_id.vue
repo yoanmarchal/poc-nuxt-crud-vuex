@@ -5,8 +5,6 @@
       <h1 class="title">
         Edit article
       </h1>
-
-      <div class="article-container">
         <form @submit.prevent="update()">
           <fieldset>
             <div class="form-group">
@@ -35,7 +33,7 @@
             <input class="button--green" type="submit" value="Submit">
           </fieldset>
         </form>
-      </div>
+
     </div>
   </section>
 </template>

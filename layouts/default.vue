@@ -54,6 +54,7 @@ html {
 
 .container {
   min-height: 100vh;
+  width: calc(100vw - 30px);
   padding: 15px;
   display: flex;
   justify-content: center;
@@ -77,7 +78,7 @@ article {
   vertical-align: top;
 }
 @media screen and (min-width: 640px) {
-  article {
+  article:not(.is-single) {
     width: 33%;
   }
 }
@@ -90,9 +91,10 @@ article h3 {
 .article-links a {
   cursor: pointer;
 }
+
 form {
-  width: calc(100vw - 30px);
-  max-width: 600px;
+  width: 100%;
+  min-width: calc(100vw - 60px);
   margin: 0 auto;
 }
 

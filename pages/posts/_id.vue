@@ -7,7 +7,7 @@
       </h1>
 
       <div class="article-container">
-        <article v-if="currentPost">
+        <article v-if="currentPost" class="is-single">
           <h3>{{ currentPost.title }}</h3>
           <p>{{ currentPost.body }}</p>
           <br>
