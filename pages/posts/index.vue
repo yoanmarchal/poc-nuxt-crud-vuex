@@ -6,17 +6,12 @@
          Posts
       </h1>
       <div class="article-container">
-        <article
+        <blog-post
           v-for="post in postList"
           v-bind:key="post.id"
+          v-bind:post="post"
         >
-          <h3>{{ post.title }}</h3>
-          <p>{{ post.body }}</p>
-          <div class="article-links">
-            <nuxt-link v-bind:to="{name: 'posts-id', params:{id: post.id}}" class="button--green"> View </nuxt-link>
-            <a @click="destroyPost({id: post.id})" class="button--grey"> Delete </a>
-          </div>
-        </article>
+        </blog-post>
       </div>
     </div>
   </section>
@@ -24,8 +19,12 @@
 
 <script>
 import { mapGetters, mapActions, mapState } from 'vuex'
+import BlogPost from '~/components/Article.vue'
 
 export default {
+  components: {
+    BlogPost
+  },
   computed: {
     ...mapGetters('posts', {
       postList: 'list'
@@ -41,8 +40,7 @@ export default {
 
   methods: {
     ...mapActions('posts', {
-      fetchPosts: 'fetchList',
-      destroyPost: 'destroy'
+      fetchPosts: 'fetchList'
     }),
     fetchData() {
       return this.fetchPosts();
