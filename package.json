@@ -16,7 +16,7 @@
     "@nuxtjs/axios": "5.3.3",
     "cross-env": "5.2.0",
     "nuxt": "2.2.0",
-    "vuex-crud": "0.3.1"
+    "vuex-crud": "0.3.2"
   },
   "devDependencies": {
     "babel-eslint": "8.2.6",

@@ -6196,9 +6196,9 @@ vue@^2.5.17:
   version "2.5.17"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
 
-vuex-crud@0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/vuex-crud/-/vuex-crud-0.3.1.tgz#3d18d02187de9abf24270d887f80ae4e569ea5cb"
+vuex-crud@0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/vuex-crud/-/vuex-crud-0.3.2.tgz#599c0887b639bdf9f869fa27fe017e894dff8ee2"
 
 vuex@^3.0.1:
   version "3.0.1"
