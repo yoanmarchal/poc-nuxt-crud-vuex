@@ -15,17 +15,17 @@
   "dependencies": {
     "@nuxtjs/axios": "5.3.6",
     "cross-env": "5.2.0",
-    "nuxt": "2.2.0",
+    "nuxt": "2.3.4",
     "vuex-crud": "0.3.2"
   },
   "devDependencies": {
     "babel-eslint": "10.0.1",
-    "eslint": "5.7.0",
+    "eslint": "5.10.0",
     "eslint-config-prettier": "3.3.0",
     "eslint-loader": "2.1.1",
     "eslint-plugin-prettier": "3.0.0",
-    "eslint-plugin-vue": "4.7.1",
+    "eslint-plugin-vue": "5.0.0",
     "nodemon": "1.18.9",
-    "prettier": "1.14.3"
+    "prettier": "1.15.3"
   }
 }
