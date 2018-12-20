@@ -1,5 +1,7 @@
 # poc-nuxt-crud-vuex-api
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/yoanmarchal/poc-nuxt-crud-vuex.svg)](https://greenkeeper.io/)
+
 > My superior Nuxt.js project
 
 ## Build Setup
