@@ -13,7 +13,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@nuxtjs/axios": "5.3.6",
+    "@nuxtjs/axios": "5.4.1",
     "cross-env": "5.2.0",
     "nuxt": "2.2.0",
     "vuex-crud": "0.3.2"
