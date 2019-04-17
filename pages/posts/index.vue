@@ -1,17 +1,21 @@
 <template>
   <section class="container">
     <div>
-      <nuxt-link class="button--green back" v-bind:to="{name: 'index'}">Back to home </nuxt-link>
+      <nuxt-link
+        class="button--green back"
+        :to="{ name: 'index' }"
+      >
+        Back to home
+      </nuxt-link>
       <h1 class="title">
-         Posts
+        Posts
       </h1>
       <div class="article-container">
         <blog-post
-          v-for="post in postList"
-          v-bind:key="post.id"
-          v-bind:post="post"
-        >
-        </blog-post>
+          v-for="post in posts"
+          :key="post.id"
+          :post="post"
+        />
       </div>
     </div>
   </section>
@@ -26,25 +30,12 @@ export default {
     BlogPost
   },
   computed: {
-    ...mapGetters('posts', {
-      postList: 'list'
-    }),
-    ...mapState([
-      'route', // vuex-router-sync
-    ]),
+    ...mapGetters({
+      posts: 'posts/posts'
+    })
   },
-
-  async fetch ({ store }) {
-    await store.dispatch('posts/fetchList')
+  async fetch({ store }) {
+    await store.dispatch('posts/fetch')
   },
-
-  methods: {
-    ...mapActions('posts', {
-      fetchPosts: 'fetchList'
-    }),
-    fetchData() {
-      return this.fetchPosts();
-    }
-  }
 }
 </script>
