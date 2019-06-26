@@ -75,7 +75,8 @@ export default {
           loader: 'eslint-loader',
           exclude: /(node_modules)/,
           options: {
-            fix: true
+            // eslintt 6 issue https://github.com/webpack-contrib/eslint-loader/issues/271
+            formatter: require('eslint/lib/cli-engine/formatters/stylish')
           }
         });
       }
