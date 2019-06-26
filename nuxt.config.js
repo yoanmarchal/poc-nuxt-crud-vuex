@@ -47,10 +47,13 @@ export default {
   },
   generate: {
     routes: function () {
-      return axios.get('http://localhost:3000/posts')
+      return axios.get('https://jsonplaceholder.typicode.com/posts')
       .then((res) => {
         return res.data.map((post) => {
-          return `/post/${post.id}`;
+          return {
+            route: `/post/${post.id}`,
+            payload: post
+          }
         });
       });
     }
