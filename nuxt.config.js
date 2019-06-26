@@ -1,8 +1,7 @@
-const pkg = require('./package')
+import pkg from './package.json';
+import axios from 'axios';
 
-module.exports = {
-  mode: 'spa',
-
+export default {
   /*
    ** Headers of the page
    */
@@ -29,14 +28,13 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/repository'],
 
   /*
    ** Nuxt.js modules
    */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/proxy',
     '@nuxtjs/axios'
   ],
   /*
@@ -44,23 +42,17 @@ module.exports = {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    // Set the baseURL to JSONPlaceholder API
+    baseURL: 'https://jsonplaceholder.typicode.com/'
   },
-
-  proxy: [
-    ['/api', {
-      target: (process.env.NODE_ENV === 'production' ? 'https://jsonplaceholder.typicode.com' : 'http://localhost:3333'),
-      ws: false,
-      pathRewrite: { '^/api': '/' }
-    }]
-  ],
   generate: {
-    routes: function() {
-      return axios.get('https://jsonplaceholder.typicode.com/posts')
+    routes: function () {
+      return axios.get('http://localhost:3000/posts')
       .then((res) => {
-        return _.map(res.data, function(post, key) {
-          return `/posts/${post.id}`
-        })
-      })
+        return res.data.map((post) => {
+          return `/post/${post.id}`;
+        });
+      });
     }
   },
 
@@ -82,8 +74,8 @@ module.exports = {
           options: {
             fix: true
           }
-        })
+        });
       }
     }
   }
-}
+};

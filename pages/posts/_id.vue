@@ -38,19 +38,10 @@
 import { mapGetters, mapActions, mapState } from 'vuex'
 
 export default {
-  computed: {
-    ...mapGetters('posts', {
-      postById: 'postById'
-    }),
-    post() {
-      return this.postById(this.$route.params.id)
+  async asyncData({ app, params }) {
+    return {
+      post: await app.$postRepository.show(params.id)
     }
-  },
-
-  async fetch({ store }) {
-    if (!store.getters['posts/isFetched']) {
-      return store.dispatch('posts/fetch');
-    }
-  },
+  }
 }
 </script>

@@ -74,14 +74,11 @@ export default {
   },
 
   methods: {
-    ...mapActions({
-      createPost: 'posts/add'
-    }),
-    resetProductInForm() {
+    resetPostForm() {
       this.post = initialData().post;
     },
     async createNewPost() {
-      return this.createPost({
+      return await this.$postRepository.create({
         data: {
           title: this.post.title,
           content: this.post.content
@@ -89,7 +86,7 @@ export default {
       }).then(
         response => {
           console.log('created')
-          this.resetProductInForm();
+          this.resetPostForm();
         },
         response => {
           console.log('not created')

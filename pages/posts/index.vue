@@ -30,12 +30,17 @@ export default {
     BlogPost
   },
   computed: {
-    ...mapGetters({
-      posts: 'posts/posts'
-    })
+    // ...mapGetters({
+    //   posts: 'posts/posts'
+    // })
   },
-  async fetch({ store }) {
-    await store.dispatch('posts/fetch')
+  async asyncData(ctx) {
+    return {
+      posts: await ctx.app.$postRepository.index()
+    }
   },
+  // async fetch({ store }) {
+  //   await store.dispatch('posts/fetch')
+  // },
 }
 </script>

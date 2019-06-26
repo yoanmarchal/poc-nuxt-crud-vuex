@@ -59,37 +59,23 @@ export default {
     }
   },
 
-  computed: {
-    ...mapGetters('posts', {
-      postById: 'postById'
-    }),
-    post() {
-      return this.postById(this.$route.params.id)
-    }
-  },
-
-  async fetch({ store }) {
-    if (!store.getters['posts/isFetched']) {
-      return store.dispatch('posts/fetch');
+  async asyncData({ app, params }) {
+    return {
+      post: await app.$postRepository.show(params.id)
     }
   },
 
   async created() {
     this.currentPost = Object.assign(
       {},
-      await this.postById(this.$route.params.id)
+      await this.$postRepository.show(this.$route.params.id)
     )
   },
 
   methods: {
-    ...mapActions('posts', {
-      updatePost: 'update',
-      fetchPost: 'fetch'
-    }),
     async update() {
-
       this.currentPost = {... this.post}
-      return this.updatePost(this.currentPost).then((response) => {
+      await this.$postRepository.update(this.currentPost, this.post.id).then((response) => {
         console.log('ok updated')
       }, (response) => {
           alert('Ups, something has gone wrong')
