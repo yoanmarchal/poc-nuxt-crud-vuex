@@ -1,7 +1,5 @@
 # poc-nuxt-crud-vuex-api
 
-> My superior Nuxt.js project
-
 ## Build Setup
 
 ``` bash
