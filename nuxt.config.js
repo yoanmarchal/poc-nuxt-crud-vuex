@@ -1,6 +1,7 @@
 import pkg from './package.json';
 import axios from 'axios';
 
+let baseURL = (process.env.NODE_ENV !== 'production') ? 'http://localhost:3333/' : 'https://jsonplaceholder.typicode.com/'
 export default {
   /*
    ** Headers of the page
@@ -43,11 +44,11 @@ export default {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
     // Set the baseURL to JSONPlaceholder API
-    baseURL: 'https://jsonplaceholder.typicode.com/'
+    baseURL: baseURL
   },
   generate: {
     routes: function () {
-      return axios.get('https://jsonplaceholder.typicode.com/posts')
+      return axios.get(baseURL + 'posts')
       .then((res) => {
         return res.data.map((post) => {
           return {

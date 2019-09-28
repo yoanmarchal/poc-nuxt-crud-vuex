@@ -38,9 +38,8 @@
 import { mapGetters, mapActions, mapState } from 'vuex'
 
 export default {
-  async asyncData({ app, params, payload }) {
-    if (payload) return { post: payload }
-    else return {
+  async asyncData({ app, params }) {
+    return {
       post: await app.$postRepository.show(params.id)
     }
   }
