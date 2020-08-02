@@ -29,18 +29,21 @@ export default {
   components: {
     BlogPost
   },
-  computed: {
-    // ...mapGetters({
-    //   posts: 'posts/posts'
-    // })
-  },
-  async asyncData(ctx) {
-    return {
-      posts: await ctx.app.$postRepository.index()
-    }
-  },
-  // async fetch({ store }) {
-  //   await store.dispatch('posts/fetch')
+  // async asyncData(ctx) {
+  //   return {
+  //     posts: await ctx.app.$postRepository.index()
+  //   }
   // },
+  async fetch({store}) {
+    await store.dispatch('posts/fetch')
+  },
+  computed: {
+    ...mapState({
+      posts: state => {
+        return state.posts.list
+      }
+    })
+  },
+
 }
 </script>

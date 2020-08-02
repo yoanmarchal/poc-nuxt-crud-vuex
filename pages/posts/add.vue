@@ -79,10 +79,8 @@ export default {
     },
     async createNewPost() {
       return await this.$postRepository.create({
-        data: {
-          title: this.post.title,
-          content: this.post.content
-        }
+        title: this.post.title,
+        body: this.post.content
       }).then(
         response => {
           console.log('created')

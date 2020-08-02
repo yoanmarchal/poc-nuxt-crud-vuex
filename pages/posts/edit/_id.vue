@@ -50,18 +50,18 @@
 import { mapGetters, mapActions, mapState } from 'vuex'
 
 export default {
+
+  async asyncData({ app, params }) {
+    return {
+      post: await app.$postRepository.show(params.id)
+    }
+  },
   data() {
     return {
       currentPost: {
         title: '',
         content: ''
       }
-    }
-  },
-
-  async asyncData({ app, params }) {
-    return {
-      post: await app.$postRepository.show(params.id)
     }
   },
 
@@ -74,11 +74,13 @@ export default {
 
   methods: {
     async update() {
-      this.currentPost = {... this.post}
-      await this.$postRepository.update(this.currentPost, this.post.id).then((response) => {
+      await this.$postRepository.update(this.post.id, {
+        title: this.currentPost.title,
+        body: this.currentPost.body
+      }).then((response) => {
         console.log('ok updated')
       }, (response) => {
-          alert('Ups, something has gone wrong')
+        console.log('Ups, something has gone wrong')
       });
     }
   }

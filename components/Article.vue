@@ -11,7 +11,7 @@
       </nuxt-link>
       <a
         class="button--grey"
-        @click="destroyPost({ id: post.id })"
+        @click="destroyPost(post)"
       > Delete </a>
     </div>
   </article>
@@ -26,14 +26,27 @@ export default {
     }
   },
   computed: {
-    ...mapState([
-      'route' // vuex-router-sync
-    ])
+    // ...mapState([
+    //   'route' // vuex-router-sync
+    // ])
   },
   methods: {
-    ...mapActions('posts', {
-      destroyPost: 'destroy'
-    })
+
+    destroyPost() {
+      this.$store.dispatch('posts/remove', this.post)
+      .then(() => this.$store.dispatch('posts/fetch'))
+    }
+
+    // ...mapActions('posts', {
+    //   destroyPost: 'remove'
+    // })
+    // async destroyPost() {
+      // await this.$postRepository.delete(this.post.id).then((response) => {
+      //   console.log('ok updated')
+      // }, (response) => {
+      //   console.log('Ups, something has gone wrong')
+      // });
+    // }
   }
 }
 </script>

@@ -3,7 +3,8 @@ import axios from 'axios'
 export const state = () => ({
   list: [],
   fetched: false,
-  newClient: ''
+  newClient: '',
+  post: {}
 })
 
 const apiPath = 'posts'
@@ -29,15 +30,27 @@ export const mutations = {
   clearClient(state) {
     state.newClient = ''
   },
+  SHOW_POST(state, obj) {
+    state.post = obj
+  },
   DELETE_CLIENT(state, id) {
     state.list = state.list.filter(p => p.id != id)
   }
 }
-
+// TODO 
+// fetchList
+// fetchSingle
 export const actions = {
   async fetch({ commit }) {
-    const { data } = await axios.get(`/api/${apiPath}`)
-    commit('SET', data)
+    await this.app.$postRepository.index()
+    .then((data) => {
+      commit('SET', data)
+    })
+  },
+  async show({ commit }, params) {
+    await this.app.$postRepository.show(params.id).then(({ data }) => {
+      commit('SHOW_POST', data)
+    })
   },
   async save({ dispatch, state }, client) {
     console.log('action:saveClient', client)
@@ -52,16 +65,13 @@ export const actions = {
   },
   async add({ commit }, newClient) {
     console.log('create client', newClient)
-    await axios
-      .post(`/api/${apiPath}`, newClient, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+
+    await this.app.$postRepository.create(newClient)
       .then(({ data }) => {
         commit('CREATE_CLIENT', data)
       })
   },
+  // TODO update item base on index in list after succes update via $postRepository
   async update({ commit }, client) {
     console.log('update client', client)
     await axios
@@ -74,14 +84,15 @@ export const actions = {
         commit('UPDATE_CLIENT', client)
       })
   },
-  async remove({ commit }, id) {
-    await axios
-      .delete(`/api/${apiPath}/${id}`, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(_ => commit('DELETE_CLIENT', id))
+  async remove({ commit }, client) {
+    await this.app.$postRepository.delete(client.id).then((data) => {
+      commit('DELETE_CLIENT', client)
+    })
+    .then((response) => {
+      console.log('ok updated')
+    }, (response) => {
+      console.log('Ups, something has gone wrong')
+    });
   }
 }
 
@@ -93,10 +104,10 @@ export const getters = {
   isFetched: state => {
     return !!state.fetched
   },
-  totalClients: state => {
-    return state.list.length
-  },
-  blueClients: state => {
-    return state.list.filter(car => state.list.color === 'Blue')
-  }
+  // totalClients: state => {
+  //   return state.list.length
+  // },
+  // blueClients: state => {
+  //   return state.list.filter(car => state.list.color === 'Blue')
+  // }
 }
