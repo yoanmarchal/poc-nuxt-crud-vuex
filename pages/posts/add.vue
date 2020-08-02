@@ -1,17 +1,18 @@
 <template>
   <section class="container">
     <div>
+      <h1 class="title">
+        Add article
+      </h1>
       <nuxt-link
         class="button--grey back"
         :to="{ name: 'index' }"
       >
         Cancel
       </nuxt-link>
-      <h1 class="title">
-        Add article
-      </h1>
 
-      <div class="article-container">
+
+      <div class="article-container mt-5">
         <form @submit.prevent="createNewPost()">
           <fieldset>
             <div class="form-group">
@@ -77,14 +78,15 @@ export default {
     resetPostForm() {
       this.post = initialData().post;
     },
+    // TODO use state
     async createNewPost() {
       return await this.$postRepository.create({
         title: this.post.title,
         body: this.post.content
       }).then(
         response => {
-          console.log('created')
           this.resetPostForm();
+          this.$router.push({ name: 'posts'})
         },
         response => {
           console.log('not created')

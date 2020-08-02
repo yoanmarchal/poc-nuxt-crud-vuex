@@ -57,25 +57,25 @@ html {
   width: calc(100vw - 30px);
   padding: 15px;
   display: flex;
-  justify-content: center;
 }
 
 .title {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
-  font-weight: 300;
+  font-weight: 900;
   font-size: 30px;
   color: #35495e;
   letter-spacing: 1px;
-  text-align: center;
   margin-bottom: 15px;
+  margin-top: 25px;
 }
 article {
   display: inline-block;
   width: 100%;
   text-align: left;
   vertical-align: top;
+  margin-bottom: 25px;
 }
 @media screen and (min-width: 640px) {
   article:not(.is-single) {
@@ -111,9 +111,8 @@ article h1 {
 }
 
 fieldset {
-  padding: 40px 25px 20px;
-  border: 1px solid grey;
-  border-radius: 3px;
+  padding: 0;
+  border: none;
 }
 
 .form-group {
@@ -153,5 +152,9 @@ label {
 
 textarea.form-control {
   height: auto;
+}
+
+.mt-5 {
+  margin-top: 15px;
 }
 </style>

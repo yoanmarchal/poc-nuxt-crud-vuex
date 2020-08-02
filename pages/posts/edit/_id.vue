@@ -74,11 +74,12 @@ export default {
 
   methods: {
     async update() {
+      // TODO use State
       await this.$postRepository.update(this.post.id, {
         title: this.currentPost.title,
         body: this.currentPost.body
       }).then((response) => {
-        console.log('ok updated')
+        this.$router.push({ name: 'posts-id', params: { id: this.post.id } })
       }, (response) => {
         console.log('Ups, something has gone wrong')
       });

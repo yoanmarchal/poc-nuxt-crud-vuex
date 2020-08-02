@@ -1,16 +1,25 @@
 <template>
   <section class="container">
     <div>
-      <nuxt-link
-        class="button--green back"
-        :to="{ name: 'index' }"
-      >
-        Back to home
-      </nuxt-link>
       <h1 class="title">
         Posts
       </h1>
-      <div class="article-container">
+      <div class="links">
+        <nuxt-link
+          class="button--green back"
+          :to="{ name: 'index' }"
+        >
+          Back to home
+        </nuxt-link>
+        <nuxt-link
+          class="button--grey"
+          :to="{ name: 'posts-add' }"
+        >
+          Add post
+        </nuxt-link>
+      </div>
+
+      <div class="article-container mt-5">
         <blog-post
           v-for="post in posts"
           :key="post.id"
@@ -47,3 +56,8 @@ export default {
 
 }
 </script>
+<style >
+  .mt-5 {
+    margin-top: 15px;
+  }
+</style>

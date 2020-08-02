@@ -38,10 +38,20 @@
 import { mapGetters, mapActions, mapState } from 'vuex'
 
 export default {
-  async asyncData({ app, params }) {
-    return {
-      post: await app.$postRepository.show(params.id)
-    }
-  }
+  // async asyncData({ app, params }) {
+  //   return {
+  //     post: await app.$postRepository.show(params.id)
+  //   }
+  // }
+  async fetch({store, params}) {
+    await store.dispatch('posts/show', params);
+  },
+  computed: {
+    ...mapState({
+      post: state => {
+        return state.posts.post
+      }
+    })
+  },
 }
 </script>

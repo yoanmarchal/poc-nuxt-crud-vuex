@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <div>
+    <div class="row">
       <h1 class="title">
         Quick demo of basic CRUD <br>
         using nuxt & vuex with api
@@ -11,12 +11,6 @@
           :to="{ name: 'posts' }"
         >
           List posts
-        </nuxt-link>
-        <nuxt-link
-          class="button--grey"
-          :to="{ name: 'posts-add' }"
-        >
-          Add post
         </nuxt-link>
       </div>
     </div>

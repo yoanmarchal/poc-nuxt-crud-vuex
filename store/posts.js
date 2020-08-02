@@ -14,7 +14,7 @@ export const mutations = {
     state.list = obj
     state.fetched = true
   },
-  CREATE_CLIENT(state, object) {
+  CREATE_POST(state, object) {
     state.list.push(object)
   },
   UPDATE_CLIENT(state, client) {
@@ -33,7 +33,7 @@ export const mutations = {
   SHOW_POST(state, obj) {
     state.post = obj
   },
-  DELETE_CLIENT(state, id) {
+  DELETE_POST(state, id) {
     state.list = state.list.filter(p => p.id != id)
   }
 }
@@ -41,16 +41,24 @@ export const mutations = {
 // fetchList
 // fetchSingle
 export const actions = {
-  async fetch({ commit }) {
+  async fetch({ commit, state }) {
     await this.app.$postRepository.index()
     .then((data) => {
       commit('SET', data)
     })
   },
-  async show({ commit }, params) {
-    await this.app.$postRepository.show(params.id).then(({ data }) => {
-      commit('SHOW_POST', data)
-    })
+  async show({ commit, state }, params) {
+    if(state.list.length == 0) {
+      await this.app.$postRepository.show(params.id).then(( data ) => {
+        commit('SHOW_POST', data)
+      })
+    } else {
+      return state.list.find(post => {
+        if(params.id == post.id) {
+          commit('SHOW_POST', post)
+        }
+      })
+    }
   },
   async save({ dispatch, state }, client) {
     console.log('action:saveClient', client)
@@ -68,7 +76,7 @@ export const actions = {
 
     await this.app.$postRepository.create(newClient)
       .then(({ data }) => {
-        commit('CREATE_CLIENT', data)
+        commit('CREATE_POST', data)
       })
   },
   // TODO update item base on index in list after succes update via $postRepository
@@ -86,7 +94,7 @@ export const actions = {
   },
   async remove({ commit }, client) {
     await this.app.$postRepository.delete(client.id).then((data) => {
-      commit('DELETE_CLIENT', client)
+      commit('DELETE_POST', client)
     })
     .then((response) => {
       console.log('ok updated')
