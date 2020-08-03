@@ -10,7 +10,7 @@ A POST, PUT or PATCH request should include a Content-Type: application/json hea
 
 export default $axios => resource => ({
   index() {
-    return $axios.$get(`${resource}`)
+    return $axios.$get(`${resource}?_sort=id&_order=desc`)
   },
 
   show(id) {

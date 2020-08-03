@@ -17,7 +17,7 @@ export const mutations = {
   CREATE_POST(state, object) {
     state.list.push(object)
   },
-  UPDATE_CLIENT(state, client) {
+  UPDATE_POST(state, client) {
     const index = state.list.findIndex(p => p.id === client.id)
 
     if (index !== -1) {
@@ -48,7 +48,7 @@ export const actions = {
     })
   },
   async show({ commit, state }, params) {
-    if(state.list.length == 0) {
+    if(s  == 0) {
       await this.app.$postRepository.show(params.id).then(( data ) => {
         commit('SHOW_POST', data)
       })
@@ -89,7 +89,7 @@ export const actions = {
         }
       })
       .then(_ => {
-        commit('UPDATE_CLIENT', client)
+        commit('UPDATE_POST', client)
       })
   },
   async remove({ commit }, client) {

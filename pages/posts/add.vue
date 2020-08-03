@@ -11,7 +11,6 @@
         Cancel
       </nuxt-link>
 
-
       <div class="article-container mt-5">
         <form @submit.prevent="createNewPost()">
           <fieldset>
@@ -53,31 +52,17 @@
 <script>
 import { mapGetters, mapActions, mapState } from 'vuex'
 
-const post = {
-  title: '',
-  content: '',
-}
-
-const initialData= () => {
-  return {
-    post: {
-      title: '',
-      ref: '',
-    }
-  }
-}
-
 export default {
   data() {
     return {
-      post
+      post: {
+        title: '',
+        content: '',
+      }
     }
   },
 
   methods: {
-    resetPostForm() {
-      this.post = initialData().post;
-    },
     // TODO use state
     async createNewPost() {
       return await this.$postRepository.create({
@@ -85,7 +70,7 @@ export default {
         body: this.post.content
       }).then(
         response => {
-          this.resetPostForm();
+          this.post = {};
           this.$router.push({ name: 'posts'})
         },
         response => {
