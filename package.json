@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "5.12.5",
-    "@nuxtjs/proxy": "2.0.1",
+    "@nuxtjs/proxy": "2.1.0",
     "cross-env": "7.0.3",
     "nuxt": "2.14.12"
   },

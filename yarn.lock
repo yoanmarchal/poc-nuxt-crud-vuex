@@ -1476,15 +1476,7 @@
     consola "^2.15.0"
     defu "^3.2.2"
 
-"@nuxtjs/proxy@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/proxy/-/proxy-2.0.1.tgz#2469b6e316311aa8c60d348502a54bfe6d5536aa"
-  integrity sha512-RVZ6iYeAuWteot9oer3vTDCOEiTwg37Mqf6yy8vPD0QQaw4z3ykgM++MzfUl85jM14+qNnODZj5EATRoCY009Q==
-  dependencies:
-    consola "^2.11.3"
-    http-proxy-middleware "^1.0.4"
-
-"@nuxtjs/proxy@^2.1.0":
+"@nuxtjs/proxy@2.1.0", "@nuxtjs/proxy@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@nuxtjs/proxy/-/proxy-2.1.0.tgz#fa7715a11d237fa1273503c4e9e137dd1bf5575b"
   integrity sha512-/qtoeqXgZ4Mg6LRg/gDUZQrFpOlOdHrol/vQYMnKu3aN3bP90UfOUB3QSDghUUK7OISAJ0xp8Ld78aHyCTcKCQ==
@@ -2898,11 +2890,6 @@ consola@^2.10.0, consola@^2.6.0, consola@^2.9.0:
   version "2.10.1"
   resolved "https://registry.yarnpkg.com/consola/-/consola-2.10.1.tgz#4693edba714677c878d520e4c7e4f69306b4b927"
   integrity sha512-4sxpH6SGFYLADfUip4vuY65f/gEogrzJoniVhNUYkJHtng0l8ZjnDCqxxrSVRHOHwKxsy8Vm5ONZh1wOR3/l/w==
-
-consola@^2.11.3:
-  version "2.11.3"
-  resolved "https://registry.yarnpkg.com/consola/-/consola-2.11.3.tgz#f7315836224c143ac5094b47fd4c816c2cd1560e"
-  integrity sha512-aoW0YIIAmeftGR8GSpw6CGQluNdkWMWh3yEFjH/hmynTYnMtibXszii3lxCXmk8YxJtI3FAK5aTiquA5VH68Gw==
 
 consola@^2.15.0:
   version "2.15.0"
@@ -4746,17 +4733,6 @@ http-errors@~1.7.2:
     setprototypeof "1.1.1"
     statuses ">= 1.5.0 < 2"
     toidentifier "1.0.0"
-
-http-proxy-middleware@^1.0.4:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-1.0.5.tgz#4c6e25d95a411e3d750bc79ccf66290675176dc2"
-  integrity sha512-CKzML7u4RdGob8wuKI//H8Ein6wNTEQR7yjVEzPbhBLGdOfkfvgTnp2HLnniKBDP9QW4eG10/724iTWLBeER3g==
-  dependencies:
-    "@types/http-proxy" "^1.17.4"
-    http-proxy "^1.18.1"
-    is-glob "^4.0.1"
-    lodash "^4.17.19"
-    micromatch "^4.0.2"
 
 http-proxy-middleware@^1.0.6:
   version "1.0.6"
